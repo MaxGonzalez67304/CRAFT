@@ -13,36 +13,65 @@ export class ListaComponent implements OnInit {
   faTrash = faTrash;
   faPenToSquare = faPenToSquare;
   items: any[] = [];
+  users: any[] = [];
   itemEditar: any = { name: "" };
+  userEditar: any = { email: "" };
 
-  item: any = {name: ""};
-
-  agregar() {
-    this.con.addItem(this.item);
-  }
+  item: any = { name: "" };
+  user: any = { email: "", password: "", passwordconfirm: "", nivel: "" };
 
   constructor(private con: ConService) {
     this.con.getItems().subscribe(items => {
       this.items = items;
       console.log(this.items);
     });
+
+    this.con.getUsers().subscribe(users => {
+      this.users = users;
+      console.log(this.users);
+    });
   }
 
   ngOnInit(): void {
   }
 
-  eliminar(id: any) {
+  agregarElemento() {
+    this.con.addItem(this.item);
+  }
+
+  agregarUsuario() { 
+    this.con.addUser(this.user);
+  }
+
+  eliminarElemento(id: any) {
     console.log(id);
     this.con.eliminarItem(id);
   }
 
-  editar(item: any) {
+  editarElemento(item: any) {
     console.log(item);
     this.itemEditar = item;
   }
 
-  editarForm() {
+  editarFormElemento() {
     this.con.editarItem(this.itemEditar);
+  }
+
+  eliminarUsuario(id: any) {
+    console.log(this.user);
+    this.con.eliminarUser(id);
+  }
+
+  editarUsuario(user: any) {
+    console.log(user);
+    this.userEditar = user;
+  }
+
+  editarFormUsuario() {
+    this.con.editarUser(this.userEditar);
+  }
+
+  limpiarForm() {
 
   }
 

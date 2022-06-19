@@ -1,30 +1,64 @@
-<form (ngSubmit)="agregar()">
+<h2 align="CENTER">PANEL DE ADMINISTRADOR</h2>
+
+<form (ngSubmit)="agregarUsuario()">
     <div class="form-group col-md-10">
-        <label>Nombre: </label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="item.name">
+        <label>Correo: </label>
+        <input type="text" class="form-control" placeholder="Escribe un correo" #filtro name="filtro" [(ngModel)]="user.email">
+        <br>
+        <label>Contraseña: </label>
+        <input type="password" class="form-control" placeholder="Escribe una contraseña" #filtro2 name="filtro2" [(ngModel)]="user.password">
+        <br>
+        <label>Nivel: </label>
+        <input type="text" class="form-control" placeholder="Asigna un nivel" #filtro3 name="filtro3" [(ngModel)]="user.nivel">
         <br>
         <button type="submit" class="btn btn-primary">Agregar</button>
     </div>
 </form>
 
-<br>
-<table class="table table-dark">
-    <tr>
-        <td><b> Nombres de las personas</b></td>
-    </tr>
+<button type="submit" (click)="filtro.value = ''" class="btn btn-primary">Limpiar</button>
 
-    <tr>
+<br>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"><b>Correo</b></th>
+            <th scope="col"><b>Contraseña</b></th>
+            <th scope="col"><b>Administrador</b></th>
+            <th scope="col"><b>Editar/Eliminar</b></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.email}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.nivel}}</td>
+            <td>
+                <fa-icon [icon]="faTrash" class="float-center text-danger" style="cursor: pointer;"
+                    (click)="eliminarUsuario(user.id)">
+                </fa-icon>
+                <fa-icon [icon]="faPenToSquare" class="float-left mr-2 text-success" style="cursor: pointer;"
+                    (click)="editarUsuario(user.email)" data-toggle="modal" data-target="#modelId"></fa-icon>
+            </td>
+
+        </tr>
+
+    </tbody>
+
+    <!-- <tr>
         <td>
-            <div class="alert alert-dark ayuda" *ngFor="let item of items">
-                {{item.name}}
+            <div class="alert alert-dark" *ngFor="let user of users">
+                {{user.email}}
+                {{user.password}}
+                {{user.nivel}}
                 <fa-icon [icon]="faTrash" class="float-right text-danger" style="cursor: pointer;"
                     (click)="eliminar(item.id)">
                 </fa-icon>
                 <fa-icon [icon]="faPenToSquare" class="float-right mr-2 text-success" style="cursor: pointer;"
-                    (click)="editar(item)" data-toggle="modal" data-target="#modelId"></fa-icon>
+                    (click)="editar(item.id)" data-toggle="modal" data-target="#modelId"></fa-icon>
             </div>
         </td>
-    </tr>
+    </tr> -->
 </table>
 
 <!-- Modal -->
@@ -38,11 +72,11 @@
                 </button>
             </div>
 
-            <form (ngSubmit)="editarForm()">
+            <form (ngSubmit)="editarFormUsuario()">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nombre:</label>
-                        <input type="text" class="form-control" name="name" [(ngModel)]="itemEditar.name">
+                        <input type="text" class="form-control" name="name" [(ngModel)]="userEditar.email">
                     </div>
                 </div>
                 <div class="modal-footer">
