@@ -35,7 +35,11 @@
             </li>
 
             <li class="nav-item" routerLinkActive="active" *ngIf="userLogged|async as user;">
-                <a class="nav-link" [routerLink]="['lista']">ADMIN</a>
+                <div *ngFor="let resu of users">
+                    <div *ngIf="user.email==resu.email&&resu.nivel">
+                        <a class="nav-link" [routerLink]="['lista']">ADMIN</a>
+                    </div>
+                </div>
             </li>
 
             <li class="nav-item">
