@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   user: any = { email: "", password: "", passwordconfirm: "", nivel: "" };
 
   validarSpeak: GlobalService;
+  admin: boolean=false;
 
   constructor(private authService: AuthService, private router: Router, private global: GlobalService, private con: ConService) { 
     this.validarSpeak=global;
@@ -36,5 +37,4 @@ export class NavbarComponent implements OnInit {
   logOut() {
     this.authService.logout();
   }
-
 }
