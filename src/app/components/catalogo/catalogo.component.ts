@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Heroe } from '../../heroe';
-import { HeroeService } from '../../services/heroe.service';
+import { Bebida } from '../../bebida';
+import { BebidaService } from '../../services/bebida.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -9,16 +9,16 @@ import { HeroeService } from '../../services/heroe.service';
 })
 export class CatalogoComponent implements OnInit {
 
-  misHeroes: Heroe[] = [];
+  misBebidas: Bebida[] = [];
 
-  constructor(public miservicio: HeroeService) { 
+  constructor(public miservicio: BebidaService) { 
     console.log('constructor de heroes');
   }
 
   ngOnInit(): void {
     console.log('ngOnInit de Heroes');
-    this.misHeroes = this.miservicio.getHeroes();
-    console.log(this.misHeroes);
+    this.misBebidas = this.miservicio.getBebidas();
+    console.log(this.misBebidas);
   }
 
 }

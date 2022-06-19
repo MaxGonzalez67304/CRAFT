@@ -18,7 +18,6 @@ import { AgregarComponent } from './components/agregar/agregar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TelefonoComponent } from './components/telefono/telefono.component';
 import { HomeComponent } from './components/home/home.component';
-import { UnheroeComponent } from './components/unheroe/unheroe.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ForoComponent } from './components/foro/foro.component';
 import { VideoComponent } from './components/video/video.component';
@@ -26,6 +25,7 @@ import { DomseguroPipe } from './domseguro.pipe';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { BebidasComponent } from './components/bebidas/bebidas.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +39,10 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     HomeComponent,
     CatalogoComponent,
     DomseguroPipe,
-    UnheroeComponent,
     ForoComponent,
     VideoComponent,
-    ContactoComponent
+    ContactoComponent,
+    BebidasComponent
   ],
   imports: [
     BrowserModule,

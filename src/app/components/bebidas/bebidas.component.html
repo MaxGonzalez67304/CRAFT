@@ -1,0 +1,21 @@
+<h1 class="animated fadeIn">{{bebida.nombre}} <small>{{bebida.tipo}}</small> </h1>
+<hr>
+
+<div class="row animated fadeIn fast">
+    <div class="col md-4 text-center">
+        <img width="300px" src="{{bebida.img}}" alt="" class="img-fluid">
+        <br><br>
+        <a [routerLink]="['/catalogo']" class="btn btn-outline-danger btn-block">Regresar</a>
+    </div>
+    <div class="col md-8">
+        <h3>{{bebida.nombre}}</h3>
+        <hr>
+        <p>{{bebida.bio}}</p>
+        <div *ngIf="bebida.tipo == 'FUERTES' else otro">
+            <img src="assets/imagenes/fuertes.png" width="300px" alt="">
+        </div>
+        <ng-template #otro>
+            <img src="assets/imagenes/medio.png" width="300px" alt="">
+        </ng-template>
+    </div>
+</div>
