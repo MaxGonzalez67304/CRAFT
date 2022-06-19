@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
+import { Storage, ref, uploadBytes } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-foro',

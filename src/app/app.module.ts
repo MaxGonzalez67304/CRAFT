@@ -24,6 +24,8 @@ import { ForoComponent } from './components/foro/foro.component';
 import { VideoComponent } from './components/video/video.component';
 import { DomseguroPipe } from './domseguro.pipe';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { ContactoComponent } from './components/contacto/contacto.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     FontAwesomeModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
   ],
   providers: [],
   bootstrap: [AppComponent]

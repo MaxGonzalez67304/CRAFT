@@ -18,7 +18,7 @@
                 <a class="nav-link" [routerLink]="['catalogo']">Catálogo</a>
             </li>
 
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="userLogged|async as user;">
                 <a class="nav-link" [routerLink]="['foro']">Foro</a>
             </li>
 
