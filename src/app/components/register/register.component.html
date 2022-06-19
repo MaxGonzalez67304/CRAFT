@@ -9,6 +9,9 @@
   
         <label style="float: left;">Password</label>
         <input class="form-control m-2" type="password" placeholder="Escribe tu contraseña" [(ngModel)]="usuario.password">
+
+        <label style="float: left;">Password Confirm</label>
+        <input class="form-control m-2" type="password" placeholder="Confirma tu contraseña" [(ngModel)]="usuario.passwordconfirm">
   
         <button class="btn btn-primary btn-block m-2" (click)="registrarse()">Registrar</button>
         <br>
