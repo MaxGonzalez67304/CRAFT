@@ -14,8 +14,7 @@ export class RegisterComponent implements OnInit {
   usuario = {
     email: '',
     password: '',
-    passwordconfirm: '',
-    name: ''
+
   }
 
   ngOnInit() {
@@ -46,6 +45,7 @@ export class RegisterComponent implements OnInit {
       }else{
         console.log("El usuario o la contraseñas no son correctas.")
       };
+
     }).catch(err => {
       console.log(err)
     })

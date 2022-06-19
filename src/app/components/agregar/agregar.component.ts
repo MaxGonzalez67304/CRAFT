@@ -9,12 +9,12 @@ import { ConService } from 'src/app/services/conection.service';
 export class AgregarComponent implements OnInit {
   item: any = {name: ""};
 
-  constructor(private ser: ConService) { }
+  constructor(private con: ConService) { }
 
   ngOnInit(): void {
   }
 
   agregar() {
-    this.ser.addItem(this.item);
+    this.con.addItem(this.item);
   }
 }
