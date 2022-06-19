@@ -9,7 +9,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { TelefonoComponent } from './components/telefono/telefono.component';
 import { UnheroeComponent } from './components/unheroe/unheroe.component';
 import { VideoComponent } from './components/video/video.component';
-import { ContactoComponent } from './components/contacto/contacto.component';
 
 const routes: Routes = [
   {
@@ -51,10 +50,6 @@ const routes: Routes = [
   {
     path: 'lista',
     component: ListaComponent
-  },
-  {
-    path: 'contacto',
-    component: ContactoComponent
   }
 ];
 
