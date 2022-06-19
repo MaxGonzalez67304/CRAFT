@@ -5,12 +5,11 @@
   text-align: center;
 }
 
-
 h1 {
   text-align: center;
   color: white;
   font-size: 85px;
-  text-shadow: 5px 5px 5px darkred;
+  text-shadow: 5px 5px 5px darkgoldenrod;
 }
 
 h2 {
@@ -22,46 +21,45 @@ h2 {
 
 h5 {
   text-align: center;
-  color: white;
-  font-size: 55px;
-  text-shadow: 5px 5px 5px darkred;
+  color: black;
+  font-size: 35px;
+}
+
+#tarjetas{
+  width: 30%;
+  margin: 5px;
+  margin-top: 7%;
+  padding: 20px;
 }
 
 p {
   margin: 0 auto;
-  color: white;
-  text-shadow: 3px 3px 3px black;
-  font-size: 32px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: black;
+  font-size: 18px;
 }
 
-#p1 {
-  margin-top: 5px;
-  color: greenyellow;
-  text-shadow: 3px 3px 3px black;
-  font-size: 26px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+#img{
+  margin-left: 5%;
+  width: 25%;
+  height: auto;
 }
 
-#b1 {
-  text-align: center;
-  position: absolute;
-  left: 46%;
+#img1{
+  margin-left: 3%;
+  width: 35%;
+  height: auto;
 }
 
 #v1 {
-  position: relative;
-  max-width: 500px;
-  border: 6px solid black;
-  border-radius: 5px;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
 }
 
-#v2 {
-  position: absolute;
-  max-width: 500px;
-  left: 60%;
-  border: 6px solid black;
-  border-radius: 5px;
+#iconos  i {
+  font-size: 26px;
+  padding: 0 8px;
+  color:#f3f3f3;
 }
 
 @media (max-width: 991px) {
@@ -72,3 +70,9 @@ p {
     text-align: center;
   }
 }
+
+#spinner{
+  position: relative;
+  left: 40%;
+}
+
