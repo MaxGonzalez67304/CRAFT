@@ -20,10 +20,6 @@ export class ListaComponent implements OnInit {
   item: any = { name: "" };
   user: any = { email: "", password: "", passwordconfirm: "", nivel: "" };
 
-  agregar() {
-    this.con.addItem(this.item);
-  }
-
   constructor(private con: ConService) {
     this.con.getItems().subscribe(items => {
       this.items = items;
@@ -37,6 +33,14 @@ export class ListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  agregarElemento() {
+    this.con.addItem(this.item);
+  }
+
+  agregarUsuario() { 
+    this.con.addUser(this.user);
   }
 
   eliminarElemento(id: any) {
@@ -65,6 +69,10 @@ export class ListaComponent implements OnInit {
 
   editarFormUsuario() {
     this.con.editarUser(this.userEditar);
+  }
+
+  limpiarForm() {
+
   }
 
 }
