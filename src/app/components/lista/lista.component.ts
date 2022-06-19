@@ -15,6 +15,12 @@ export class ListaComponent implements OnInit {
   items: any[] = [];
   itemEditar: any = { name: "" };
 
+  item: any = {name: ""};
+
+  agregar() {
+    this.con.addItem(this.item);
+  }
+
   constructor(private con: ConService) {
     this.con.getItems().subscribe(items => {
       this.items = items;
