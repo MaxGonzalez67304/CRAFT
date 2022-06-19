@@ -14,7 +14,6 @@ export class RegisterComponent implements OnInit {
   usuario = {
     email: '',
     password: '',
-    name: ''
   }
 
   ngOnInit() {
@@ -43,7 +42,7 @@ export class RegisterComponent implements OnInit {
         this.database.crear('users', this.usuario);
       };
 
-      this.router.navigate(['/principal']);
+      this.router.navigate(['/home']);
     }).catch(err => {
       console.log(err)
     })
