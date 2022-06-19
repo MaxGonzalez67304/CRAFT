@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ForoComponent } from './components/foro/foro.component';
 import { HomeComponent } from './components/home/home.component';
+import { ListaComponent } from './components/lista/lista.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TelefonoComponent } from './components/telefono/telefono.component';
@@ -35,12 +36,25 @@ const routes: Routes = [
     component: UnheroeComponent
   },
   {
+    path: 'heroe/:id', 
+    component: UnheroeComponent
+  },
+  {
+    path: '**', 
+    pathMatch:'full', 
+    redirectTo: 'home'
+  },
+  {
     path: 'foro',
     component: ForoComponent
   },
   {
     path: 'video',
     component: VideoComponent
+  },
+  {
+    path: 'lista',
+    component: ListaComponent
   }
 ];
 

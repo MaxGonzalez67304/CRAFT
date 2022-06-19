@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         alert("Datos incorrectos, si no tenes cuenta registrate!");
         return;
       };
-      this.router.navigate(['/principal']);
+      this.router.navigate(['/lista']);
     }).catch(err => {
       console.log(err)
     })
