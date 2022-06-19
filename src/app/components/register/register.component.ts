@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   usuario = {
     email: '',
     password: '',
-
+    passwordconfirm: ''
   }
 
   ngOnInit() {
