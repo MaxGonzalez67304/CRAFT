@@ -1,42 +1,30 @@
 
-<h1>Contactanos</h1>
-<hr>
-
-<form [formGroup]="forma" (ngSubmit)="guardarCambios()" class="needs-validation" novalidate>
-  <div class="container">
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Nombre</label>
-      <div class="col-8">
-        <input class="form-control" [ngClass]="{'is-invalid':!forma.get('nombre')?.valid}" type="text"
-          placeholder="Nombre" formControlName="nombre">
-
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Apellido</label>
-      <div class="col-8">
-        <input class="form-control" [ngClass]="{'is-invalid':!forma.get('nombre')?.valid}" type="text"
-          placeholder="Apellido" formControlName="apellido">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Correo</label>
-      <div class="col-8">
-        <input class="form-control" type="text" [ngClass]="{'is-invalid':!forma.get('correo')?.valid }"
-          placeholder="Correo electronico" formControlName="correo">
-        
-        
-
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">&nbsp;</label>
-      <div class="input-group col-md-8">
-        <button type="submit" class="btn btn-outline-primary" [disabled]="forma.invalid">
-          Guardar
-        </button>
-      </div>
-    </div>
+<div class="container  border-top border-primary " style="max-width: 500px" id="contenedor-formulario">
+  <div class="text-center mb-4" id="titulo-formulario">
+    <h2>Contactanos</h2>
+    <p class="fs-5">Pasanos tus dudas</p>
   </div>
 
-</form>
+  <form   method="POST" data-netlify="true" action="#">     
+        <div class= "mb-3">           
+          <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com">
+        </div>
+
+        <div class="mb-3">            
+          <input type="input" class="form-control" id="name" name="name" placeholder="John Doe">
+        </div>
+        
+        <div class="mb-3">
+          <input type="tel" class="form-control" name="phone" id="phone" placeholder="Teléfono">
+        </div>
+
+      <div class="mb-3">       
+        <textarea class="form-control" name="message" id="message" rows="4"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <button type="submit" class=" btn btn-primary w-100 fs-5">Enviar Mensaje</button>
+      </div>
+  </form>
+
+</div>
