@@ -14,7 +14,8 @@ export class RegisterComponent implements OnInit {
   usuario = {
     email: '',
     password: '',
-    passwordconfirm: ''
+    passwordconfirm: '',
+    nivel: ''
   }
 
   ngOnInit() {
@@ -38,11 +39,11 @@ export class RegisterComponent implements OnInit {
       let lista = [...this.usuarios];
       let existe = lista.find(user => user.email == email);
 
-      if (!existe&&this.usuario.password==this.usuario.passwordconfirm) {
+      if (!existe && this.usuario.password == this.usuario.passwordconfirm) {
         console.log("USUARIO NUEVO CREADO")
         this.database.crear('users', this.usuario);
         this.router.navigate(['/home']);
-      }else{
+      } else {
         console.log("El usuario o la contraseñas no son correctas.")
       };
 
