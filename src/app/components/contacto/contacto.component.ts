@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contacto',
@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ContactoComponent implements OnInit {
 
   title = 'Contactanos';
-  forma!: FormGroup;
+  forma!: UntypedFormGroup;
   usuario:any={
     nombre:"",
     apellido:"",
@@ -17,10 +17,10 @@ export class ContactoComponent implements OnInit {
     }
 
   constructor() { 
-    this.forma = new FormGroup({
-      'nombre': new FormControl('',[Validators.required, Validators.minLength(3)]),
-      'apellido': new FormControl('',Validators.required),
-      'correo': new FormControl('',[Validators.required,Validators.email]),
+    this.forma = new UntypedFormGroup({
+      'nombre': new UntypedFormControl('',[Validators.required, Validators.minLength(3)]),
+      'apellido': new UntypedFormControl('',Validators.required),
+      'correo': new UntypedFormControl('',[Validators.required,Validators.email]),
     });
 
     this.forma.setValue(this.usuario);
