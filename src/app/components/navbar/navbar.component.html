@@ -37,6 +37,10 @@
             <li class="nav-item" routerLinkActive="active" *ngIf="userLogged|async as user;">
                 <a class="nav-link" [routerLink]="['lista']">ADMIN</a>
             </li>
+
+            <li class="nav-item">
+                <button (click)="habilitarSpeak()" style="background-color: #032238;"><i class="fas fa-assistive-listening-systems" style="color: white; font-size: 35px;"></i></button>
+              </li>
             
         </ul>
     </div>
