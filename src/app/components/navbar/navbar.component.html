@@ -18,7 +18,7 @@
                 <a class="nav-link" [routerLink]="['catalogo']">Catálogo</a>
             </li>
 
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="userLogged|async as user;">
                 <a class="nav-link" [routerLink]="['foro']">Foro</a>
             </li>
 
@@ -27,21 +27,21 @@
             </li>
 
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['usuarios']">Usuarios</a>
+                <a class="nav-link" [routerLink]="['ayuda']">Ayuda</a>
             </li>
 
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['about']">About</a>
+                <a class="nav-link" [routerLink]="['contacto']">Contacto</a>
             </li>
 
-            <li class="nav-item" routerLinkActive="active" *ngIf="userLogged|async as user;">
+            <li class="nav-item" routerLinkActive="active" *ngIf="user.nivel == true">
                 <a class="nav-link" [routerLink]="['lista']">ADMIN</a>
             </li>
 
             <li class="nav-item">
-                <button (click)="habilitarSpeak()" style="background-color: #032238;"><i class="fas fa-assistive-listening-systems" style="color: white; font-size: 35px;"></i></button>
-              </li>
-            
+                <button (click)="habilitarSpeak()" style="background-color: #032238;">
+                    <i class="fas fa-assistive-listening-systems" style="color: white; font-size: 35px;"></i></button>
+            </li>
         </ul>
     </div>
 

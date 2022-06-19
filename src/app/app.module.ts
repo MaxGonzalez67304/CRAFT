@@ -23,6 +23,7 @@ import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ForoComponent } from './components/foro/foro.component';
 import { VideoComponent } from './components/video/video.component';
 import { DomseguroPipe } from './domseguro.pipe';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DomseguroPipe } from './domseguro.pipe';
     DomseguroPipe,
     UnheroeComponent,
     ForoComponent,
-    VideoComponent
+    VideoComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,

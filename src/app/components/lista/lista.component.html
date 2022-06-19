@@ -1,11 +1,21 @@
-<form (ngSubmit)="agregar()">
+<h2 align="CENTER">PANEL DE ADMINISTRADOR</h2>
+
+<form (ngSubmit)="agregarUsuario()">
     <div class="form-group col-md-10">
-        <label>Nombre: </label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="item.name">
+        <label>Correo: </label>
+        <input type="text" class="form-control" placeholder="Escribe un correo" #filtro name="filtro" [(ngModel)]="user.email">
+        <br>
+        <label>Contraseña: </label>
+        <input type="password" class="form-control" placeholder="Escribe una contraseña" #filtro2 name="filtro2" [(ngModel)]="user.password">
+        <br>
+        <label>Nivel: </label>
+        <input type="text" class="form-control" placeholder="Asigna un nivel" #filtro3 name="filtro3" [(ngModel)]="user.nivel">
         <br>
         <button type="submit" class="btn btn-primary">Agregar</button>
     </div>
 </form>
+
+<button type="submit" (click)="filtro.value = ''" class="btn btn-primary">Limpiar</button>
 
 <br>
 <table class="table table-bordered">
@@ -13,7 +23,7 @@
         <tr>
             <th scope="col"><b>Correo</b></th>
             <th scope="col"><b>Contraseña</b></th>
-            <th scope="col"><b>Nivel</b></th>
+            <th scope="col"><b>Administrador</b></th>
             <th scope="col"><b>Editar/Eliminar</b></th>
         </tr>
     </thead>
@@ -28,7 +38,7 @@
                     (click)="eliminarUsuario(user.id)">
                 </fa-icon>
                 <fa-icon [icon]="faPenToSquare" class="float-left mr-2 text-success" style="cursor: pointer;"
-                    (click)="editarUsuario(user.id)" data-toggle="modal" data-target="#modelId"></fa-icon>
+                    (click)="editarUsuario(user.email)" data-toggle="modal" data-target="#modelId"></fa-icon>
             </td>
 
         </tr>
