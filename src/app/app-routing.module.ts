@@ -12,7 +12,7 @@ import { VideoComponent } from './components/video/video.component';
 
 const routes: Routes = [
   {
-    path: 'home', 
+    path: 'home',
     component: HomeComponent
   },
   {
@@ -36,13 +36,8 @@ const routes: Routes = [
     component: UnheroeComponent
   },
   {
-    path: 'heroe/:id', 
+    path: 'heroe/:id',
     component: UnheroeComponent
-  },
-  {
-    path: '**', 
-    pathMatch:'full', 
-    redirectTo: 'home'
   },
   {
     path: 'foro',
