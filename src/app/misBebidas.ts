@@ -72,5 +72,5 @@ export const BEBIDAS: Bebida[] = [
     bio: "Clasico sabor de un Tequila Sunrise con el toque de Craft que lleva Mezacal,Jugo de Naranja y Granadina.",
     img: "assets/imagenes/sunrise.png",
     tipo: "MEDIO PELO"
-  }
+  },
 ];
