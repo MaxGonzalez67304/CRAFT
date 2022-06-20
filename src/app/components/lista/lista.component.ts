@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConService } from '../../services/conection.service'
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista',
@@ -39,8 +40,17 @@ export class ListaComponent implements OnInit {
     this.con.addItem(this.item);
   }
 
+  alertaEXITO() {
+    Swal.fire({
+      icon: 'success',
+      title: 'EXITO',
+      text: 'INGRESO EXITOSO',
+    })
+  }
+
   agregarUsuario() { 
     this.con.addUser(this.user);
+    this.alertaEXITO();
   }
 
   eliminarElemento(id: any) {
