@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ConService } from '../../services/conection.service'
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
+import { GlobalService } from 'src/app/global.service';
 
 @Component({
   selector: 'app-lista',
@@ -13,37 +15,79 @@ export class ListaComponent implements OnInit {
   faTrash = faTrash;
   faPenToSquare = faPenToSquare;
   items: any[] = [];
+  users: any[] = [];
   itemEditar: any = { name: "" };
+  userEditar: any = { email: "" };
+  validarSpeak: GlobalService;
+  mensaje: any;
+  oracion: any;
 
-  item: any = {name: ""};
+  item: any = { name: "" };
+  user: any = { email: "", password: "", passwordconfirm: "", nivel: "" };
 
-  agregar() {
-    this.con.addItem(this.item);
-  }
+  constructor(private con: ConService, global: GlobalService) {
+    if ('speechSynthesis' in window) {
+      this.mensaje = new SpeechSynthesisUtterance();
+    } else {
+      alert("Lo siento, tu navegador no soporta esta tecnología");
+    }
+    this.validarSpeak = global;
+    console.log(this.validarSpeak);
 
-  constructor(private con: ConService) {
-    this.con.getItems().subscribe(items => {
-      this.items = items;
-      console.log(this.items);
+    this.con.getUsers().subscribe(users => {
+      this.users = users;
+      console.log(this.users);
     });
   }
 
   ngOnInit(): void {
   }
 
-  eliminar(id: any) {
-    console.log(id);
-    this.con.eliminarItem(id);
+  alertaEXITO() {
+    Swal.fire({
+      icon: 'success',
+      title: 'EXITO',
+      text: 'USUARIO AGREGADO',
+    })
   }
 
-  editar(item: any) {
-    console.log(item);
-    this.itemEditar = item;
+  agregarUsuario() { 
+    this.con.addUser(this.user);
+    this.alertaEXITO();
   }
 
-  editarForm() {
-    this.con.editarItem(this.itemEditar);
+  eliminarUsuario(id: any) {
+    console.log(this.user);
+    this.con.eliminarUser(id);
+  }
 
+  editarUsuario(user: any) {
+    console.log(user);
+    this.userEditar = user;
+  }
+
+  editarFormUsuario() {
+    this.con.editarUser(this.userEditar);
+  }
+
+  limpiarForm() {
+
+  }
+
+  playSpeak(texto2: string) {
+    this.oracion = document.getElementById(texto2)!.innerHTML;
+    this.mensaje.text = this.oracion;
+    if (speechSynthesis.paused) {
+      speechSynthesis.resume();
+    } else {
+      speechSynthesis.cancel();
+      speechSynthesis.speak(this.mensaje);
+    }
+  }
+
+  stopSpeak() {
+    speechSynthesis.resume();
+    speechSynthesis.pause();
   }
 
 }

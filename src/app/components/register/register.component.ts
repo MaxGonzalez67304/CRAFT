@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataBaseService } from 'src/app/services/database.service';
+import { GlobalService } from 'src/app/global.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -10,11 +12,15 @@ import { DataBaseService } from 'src/app/services/database.service';
 })
 export class RegisterComponent implements OnInit {
 
+  validarSpeak: GlobalService;
+  mensaje: any;
+  oracion: any;
   usuarios: any;
   usuario = {
     email: '',
     password: '',
-    passwordconfirm: ''
+    passwordconfirm: '',
+    nivel: ''
   }
 
   ngOnInit() {
@@ -29,7 +35,46 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  constructor(private authService: AuthService, private database: DataBaseService, private router: Router) { }
+  constructor(private authService: AuthService, private database: DataBaseService, private router: Router, global: GlobalService) {
+    if ('speechSynthesis' in window) {
+      this.mensaje = new SpeechSynthesisUtterance();
+    } else {
+      alert("Lo siento, tu navegador no soporta esta tecnología");
+    }
+    this.validarSpeak = global;
+    console.log(this.validarSpeak);
+  }
+
+  playSpeak(texto2: string) {
+    this.oracion = document.getElementById(texto2)!.innerHTML;
+    this.mensaje.text = this.oracion;
+    if (speechSynthesis.paused) {
+      speechSynthesis.resume();
+    } else {
+      speechSynthesis.cancel();
+      speechSynthesis.speak(this.mensaje);
+    }
+  }
+
+  stopSpeak() {
+    speechSynthesis.pause();
+  }
+
+  alertaEXITO() {
+    Swal.fire({
+      icon: 'success',
+      title: 'EXITO',
+      text: 'INGRESO EXITOSO',
+    })
+  }
+
+  alertaFAIL() {
+    Swal.fire({
+      icon: 'error',
+      title: 'ERROR',
+      text: 'DATOS INCORRECTOS',
+    })
+  }
 
   registrarse() {
     const { email, password } = this.usuario;
@@ -38,16 +83,18 @@ export class RegisterComponent implements OnInit {
       let lista = [...this.usuarios];
       let existe = lista.find(user => user.email == email);
 
-      if (!existe&&this.usuario.password==this.usuario.passwordconfirm) {
+      if (!existe && this.usuario.password == this.usuario.passwordconfirm) {
         console.log("USUARIO NUEVO CREADO")
         this.database.crear('users', this.usuario);
+        this.alertaEXITO();
         this.router.navigate(['/home']);
-      }else{
+      } else {
+        this.alertaFAIL();
         console.log("El usuario o la contraseñas no son correctas.")
       };
 
     }).catch(err => {
-      console.log(err)
+      console.log(err);
     })
   }
 }

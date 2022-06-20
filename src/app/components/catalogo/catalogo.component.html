@@ -1,4 +1,27 @@
 <br><br>
+<<<<<<< HEAD
+<h1 class="text-center">Catálogo de Bombas </h1>
+<br>
+<div style="justify-content: center; text-align: center;">
+  <h2 class="text-center">CONSULTA NUESTRO MENU COMPLETO</h2>
+  <br>
+  <img  src="assets/imagenes/qr.png" alt="">
+</div>
+<ngx-qrcode>
+  [elementType]="elementType"
+  [value]="value"
+  cssClass="aclass"
+  [errorCorrectionLevel]="errorCorrectionLevel"
+</ngx-qrcode>
+<br><br>
+<div class="card-columns" id="bombas">
+  <div class="card" *ngFor="let i of misBebidas, let h=index">
+    <img src="{{i.img}}" class="card-img-top" alt="...">
+    <div class="card-body ">
+      <h5 class="card-title bg-dark text-white">{{i.nombre}}</h5>
+      <p class="bio">{{i.bio.substr(0,110)}} ...</p>
+      <p class="card-text"><small class="text-muted">{{i.tipo}}</small></p>
+=======
 <h1 class="text-center">Catalogo de Bombas </h1>
 <br>
 <div class="card-columns">
@@ -10,5 +33,18 @@
         <p class="card-text"><small class="text-muted">{{i.aparicion}}</small></p>
       </div>
       <a [routerLink]="['/heroe',h]" class="mb-3 btn btn-outline-primary btn-block">VerMas</a>
+>>>>>>> e425f8381cb4d837330e19f97c8c2d602932de68
     </div>
+    <a [routerLink]="['/heroe',h]" class="mb-3 btn btn-outline-primary btn-block">Ver más</a>
+  </div>
+</div>
+
+<div style="left: 0%;">
+  <ng-container *ngIf="validarSpeak.band">
+    <button (click)="playSpeak('bombas')"
+      style="background-color: darkgray; border: none; margin-left: 15px; left: 0%;"><i class="far fa-play-circle"
+        style="color:rgb(42, 104, 180)"></i></button>
+    <button (click)="stopSpeak()" style="background-color: darkgray; border: none; left: 0%;"><i
+        class="far fa-stop-circle" style="color:rgb(42, 104, 180)"></i></button>
+  </ng-container>
 </div>

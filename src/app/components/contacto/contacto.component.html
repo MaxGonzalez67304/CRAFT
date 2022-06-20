@@ -1,0 +1,39 @@
+<div class="container  border-top border-primary " style="max-width: 500px" id="contenedor-formulario">
+  <div class="text-center mb-4" id="titulo-formulario">
+    <h2>Contactanos</h2>
+    <p class="fs-5">Pasanos tus dudas</p>
+  </div>
+
+  <form   method="POST" data-netlify="true" action="#">     
+        <div class= "mb-3">           
+          <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com">
+        </div>
+
+        <div class="mb-3">            
+          <input type="input" class="form-control" id="name" name="name" placeholder="John Doe">
+        </div>
+        
+        <div class="mb-3">
+          <input type="tel" class="form-control" name="phone" id="phone" placeholder="Teléfono">
+        </div>
+
+      <div class="mb-3">       
+        <textarea class="form-control" name="message" id="message" rows="4"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <button type="submit" class=" btn btn-primary w-100 fs-5">Enviar Mensaje</button>
+      </div>
+  </form>
+
+</div>
+
+<div style="left: 0%;">
+  <ng-container *ngIf="validarSpeak.band">
+    <button (click)="playSpeak('contenedor-formulario')"
+      style="background-color: darkgray; border: none; margin-left: 15px; left: 0%;"><i class="far fa-play-circle"
+        style="color:rgb(42, 104, 180)"></i></button>
+    <button (click)="stopSpeak()" style="background-color: darkgray; border: none; left: 0%;"><i
+        class="far fa-stop-circle" style="color:rgb(42, 104, 180)"></i></button>
+  </ng-container>
+</div>
