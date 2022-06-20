@@ -44,7 +44,7 @@ export class ListaComponent implements OnInit {
     Swal.fire({
       icon: 'success',
       title: 'EXITO',
-      text: 'INGRESO EXITOSO',
+      text: 'USUARIO AGREGADO',
     })
   }
 

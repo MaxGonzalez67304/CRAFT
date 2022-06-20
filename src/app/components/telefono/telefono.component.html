@@ -1,25 +1,27 @@
-<div class="container">
-  <div class="card text-center">
-    <div class="card-header">
-      <b>LOGIN CON TELÉFONO CELULAR</b>
-    </div>
-    <div class="card-body p-4">
-      <label style="float: left;"><b>Incluye la LADA en el número</b></label>
-      <br>
-      <label style="float: left;">Número de telefono:</label>
-      <input class="form-control m-2" placeholder="Escribe tu numero de celular" #telefono type="text">
+<div id="conte">
+  <div class="container">
+    <div class="card text-center">
+      <div class="card-header">
+        <b>LOGIN CON TELÉFONO CELULAR</b>
+      </div>
+      <div class="card-body p-4">
+        <label style="float: left;"><b>Incluye la LADA en el número</b></label>
+        <br>
+        <label style="float: left;">Número de telefono:</label>
+        <input class="form-control m-2" placeholder="Escribe tu numero de celular" #telefono type="text">
 
-      <div class="captcha" id="recaptcha-container"></div>
+        <div class="captcha" id="recaptcha-container"></div>
 
-      <button class="btn btn-primary btn-block m-2" (click)="mandarCodigo(telefono.value)">Enviar código</button>
+        <button class="btn btn-primary btn-block m-2" (click)="mandarCodigo(telefono.value)">Enviar código</button>
 
-      <label style="float: left;">Código de verificación:</label>
-      <input class="form-control m-2" #codigo type="text">
-      <button class="btn btn-primary btn-block m-2" (click)="verificarCodigo(codigo.value)">Verificar e Ingresar</button>
+        <label style="float: left;">Código de verificación:</label>
+        <input class="form-control m-2" #codigo type="text">
+        <button class="btn btn-primary btn-block m-2" (click)="verificarCodigo(codigo.value)">Verificar e
+          Ingresar</button>
 
-      <br>
-      <label>¿Ya tienes una cuenta? <a routerLink="/login">Ingresar</a></label>
+        <br>
+        <label>¿Ya tienes una cuenta? <a routerLink="/login">Ingresar</a></label>
+      </div>
     </div>
   </div>
-
 </div>
