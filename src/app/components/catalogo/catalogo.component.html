@@ -6,6 +6,12 @@
   <br>
   <img  src="assets/imagenes/qr.png" alt="">
 </div>
+<ngx-qrcode>
+  [elementType]="elementType"
+  [value]="value"
+  cssClass="aclass"
+  [errorCorrectionLevel]="errorCorrectionLevel"
+</ngx-qrcode>
 <br><br>
 <div class="card-columns" id="bombas">
   <div class="card" *ngFor="let i of misBebidas, let h=index">

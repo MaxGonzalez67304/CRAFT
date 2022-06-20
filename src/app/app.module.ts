@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -60,6 +61,7 @@ import { AboutComponent } from './components/about/about.component';
     NgChartsModule,
     AppRoutingModule,
     NgbModule,
+    NgxQRCodeModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
