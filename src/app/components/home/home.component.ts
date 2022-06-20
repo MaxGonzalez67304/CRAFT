@@ -38,7 +38,9 @@ export class HomeComponent implements OnInit {
   }
 
   stopSpeak(){
+    speechSynthesis.resume();
     speechSynthesis.pause();
+    
   }
 
 }

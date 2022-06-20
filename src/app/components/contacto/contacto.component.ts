@@ -51,6 +51,7 @@ export class ContactoComponent implements OnInit {
   }
 
   stopSpeak() {
+    speechSynthesis.resume();
     speechSynthesis.pause();
   }
   

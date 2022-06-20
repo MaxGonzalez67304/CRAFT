@@ -86,6 +86,7 @@ export class ListaComponent implements OnInit {
   }
 
   stopSpeak() {
+    speechSynthesis.resume();
     speechSynthesis.pause();
   }
 

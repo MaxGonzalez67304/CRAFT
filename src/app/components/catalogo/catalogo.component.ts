@@ -37,6 +37,7 @@ export class CatalogoComponent implements OnInit {
   }
 
   stopSpeak() {
+    speechSynthesis.resume();
     speechSynthesis.pause();
   }
   
