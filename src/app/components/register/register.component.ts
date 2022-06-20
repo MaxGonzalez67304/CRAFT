@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataBaseService } from 'src/app/services/database.service';
 import { GlobalService } from 'src/app/global.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { GlobalService } from 'src/app/global.service';
 })
 export class RegisterComponent implements OnInit {
 
-  validarSpeak: GlobalService; 
+  validarSpeak: GlobalService;
   mensaje: any;
   oracion: any;
   usuarios: any;
@@ -42,21 +43,37 @@ export class RegisterComponent implements OnInit {
     }
     this.validarSpeak = global;
     console.log(this.validarSpeak);
-   }
+  }
 
-   playSpeak(texto2:string) {  
+  playSpeak(texto2: string) {
     this.oracion = document.getElementById(texto2)!.innerHTML;
-    this.mensaje.text= this.oracion; 
-    if(speechSynthesis.paused){
+    this.mensaje.text = this.oracion;
+    if (speechSynthesis.paused) {
       speechSynthesis.resume();
-    }else{
+    } else {
       speechSynthesis.cancel();
       speechSynthesis.speak(this.mensaje);
     }
   }
 
-  stopSpeak(){
+  stopSpeak() {
     speechSynthesis.pause();
+  }
+
+  alertaEXITO() {
+    Swal.fire({
+      icon: 'success',
+      title: 'EXITO',
+      text: 'INGRESO EXITOSO',
+    })
+  }
+
+  alertaFAIL() {
+    Swal.fire({
+      icon: 'error',
+      title: 'ERROR',
+      text: 'DATOS INCORRECTOS',
+    })
   }
 
   registrarse() {
@@ -69,13 +86,15 @@ export class RegisterComponent implements OnInit {
       if (!existe && this.usuario.password == this.usuario.passwordconfirm) {
         console.log("USUARIO NUEVO CREADO")
         this.database.crear('users', this.usuario);
+        this.alertaEXITO();
         this.router.navigate(['/home']);
       } else {
+        this.alertaFAIL();
         console.log("El usuario o la contraseñas no son correctas.")
       };
 
     }).catch(err => {
-      console.log(err)
+      console.log(err);
     })
   }
 }
