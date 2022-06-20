@@ -28,3 +28,13 @@
   </form>
 
 </div>
+
+<div style="left: 0%;">
+  <ng-container *ngIf="validarSpeak.band">
+    <button (click)="playSpeak('contenedor-formulario')"
+      style="background-color: darkgray; border: none; margin-left: 15px; left: 0%;"><i class="far fa-play-circle"
+        style="color:rgb(42, 104, 180)"></i></button>
+    <button (click)="stopSpeak()" style="background-color: darkgray; border: none; left: 0%;"><i
+        class="far fa-stop-circle" style="color:rgb(42, 104, 180)"></i></button>
+  </ng-container>
+</div>
