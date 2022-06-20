@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
+import { NgChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { BebidasComponent } from './components/bebidas/bebidas.component';
+import { GraficaComponent } from './components/grafica/grafica.component';
 import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
@@ -45,10 +47,12 @@ import { AboutComponent } from './components/about/about.component';
     VideoComponent,
     ContactoComponent,
     BebidasComponent,
+    GraficaComponent,
     AboutComponent
   ],
   imports: [
     BrowserModule,
+    NgChartsModule,
     AppRoutingModule,
     NgbModule,
     NgxQRCodeModule,

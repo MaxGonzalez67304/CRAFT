@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TelefonoComponent } from './components/telefono/telefono.component';
 import { VideoComponent } from './components/video/video.component';
+import { GraficaComponent } from './components/grafica/grafica.component';
 import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
@@ -56,6 +57,11 @@ const routes: Routes = [
   {
     path: 'contacto',
     component: ContactoComponent
+  },
+  {
+    path: 'grafica',
+    component: GraficaComponent
+
   },
   {
     path: 'about',
