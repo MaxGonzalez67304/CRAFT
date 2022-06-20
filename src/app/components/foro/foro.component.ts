@@ -96,6 +96,7 @@ export class ForoComponent implements OnInit {
   }
 
   stopSpeak() {
+    speechSynthesis.resume();
     speechSynthesis.pause();
   }
 
