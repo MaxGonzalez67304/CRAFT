@@ -21,60 +21,73 @@
         </div>
     </form>
 
+    <div style="left: 0%;">
+        <ng-container *ngIf="validarSpeak.band">
+            <button (click)="playSpeak('texto')"
+                style="background-color: darkgray; border: none; margin-left: 15px; left: 0%;"><i
+                    class="far fa-play-circle" style="color:rgb(42, 104, 180)"></i></button>
+            <button (click)="stopSpeak()" style="background-color: darkgray; border: none; left: 0%;"><i
+                    class="far fa-stop-circle" style="color:rgb(42, 104, 180)"></i></button>
+        </ng-container>
+    </div>
+
     <br>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col"><b>Correo</b></th>
-                <th scope="col"><b>Contraseña</b></th>
-                <th scope="col"><b>Administrador</b></th>
-                <th scope="col"><b>Editar/Eliminar</b></th>
-            </tr>
-        </thead>
-
-        <tbody class="ayuda">
-            <tr *ngFor="let user of users">
-                <td>{{user.email}}</td>
-                <td>{{user.password}}</td>
-                <td>{{user.nivel}}</td>
-                <td>
-                    <fa-icon [icon]="faTrash" class="float-center text-danger" style="cursor: pointer;"
-                        (click)="eliminarUsuario(user.id)">
-                    </fa-icon>
-                    <fa-icon [icon]="faPenToSquare" class="float-left mr-2 text-success" style="cursor: pointer;"
-                        (click)="editarUsuario(user.email)" data-toggle="modal" data-target="#modelId"></fa-icon>
-                </td>
-
-            </tr>
-
-        </tbody>
-
-    </table>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Editar</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <form (ngSubmit)="editarFormUsuario()">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="">Nombre:</label>
-                            <input type="text" class="form-control" name="name" [(ngModel)]="userEditar.email">
+    <div id="texto">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col"><b>Correo</b></th>
+                    <th scope="col"><b>Contraseña</b></th>
+                    <th scope="col"><b>Administrador</b></th>
+                    <th scope="col"><b>Editar/Eliminar</b></th>
+                </tr>
+            </thead>
+    
+            <tbody class="ayuda">
+                <tr *ngFor="let user of users">
+                    <td>{{user.email}}</td>
+                    <td>{{user.password}}</td>
+                    <td>{{user.nivel}}</td>
+                    <td>
+                        <fa-icon [icon]="faTrash" class="float-center text-danger" style="cursor: pointer;"
+                            (click)="eliminarUsuario(user.id)">
+                        </fa-icon>
+                        <fa-icon [icon]="faPenToSquare" class="float-left mr-2 text-success" style="cursor: pointer;"
+                            (click)="editarUsuario(user.email)" data-toggle="modal" data-target="#modelId"></fa-icon>
+                    </td>
+    
+                </tr>
+    
+            </tbody>
+    
+        </table>
+    
+        <!-- Modal -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+    
+                    <form (ngSubmit)="editarFormUsuario()">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">Nombre:</label>
+                                <input type="text" class="form-control" name="name" [(ngModel)]="userEditar.email">
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+    
 </div>

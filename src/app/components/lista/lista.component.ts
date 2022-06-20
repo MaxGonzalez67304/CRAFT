@@ -3,6 +3,7 @@ import { ConService } from '../../services/conection.service'
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+import { GlobalService } from 'src/app/global.service';
 
 @Component({
   selector: 'app-lista',
@@ -17,11 +18,21 @@ export class ListaComponent implements OnInit {
   users: any[] = [];
   itemEditar: any = { name: "" };
   userEditar: any = { email: "" };
+  validarSpeak: GlobalService;
+  mensaje: any;
+  oracion: any;
 
   item: any = { name: "" };
   user: any = { email: "", password: "", passwordconfirm: "", nivel: "" };
 
-  constructor(private con: ConService) {
+  constructor(private con: ConService, global: GlobalService) {
+    if ('speechSynthesis' in window) {
+      this.mensaje = new SpeechSynthesisUtterance();
+    } else {
+      alert("Lo siento, tu navegador no soporta esta tecnología");
+    }
+    this.validarSpeak = global;
+    console.log(this.validarSpeak);
     this.con.getItems().subscribe(items => {
       this.items = items;
       console.log(this.items);
@@ -83,6 +94,21 @@ export class ListaComponent implements OnInit {
 
   limpiarForm() {
 
+  }
+
+  playSpeak(texto2: string) {
+    this.oracion = document.getElementById(texto2)!.innerHTML;
+    this.mensaje.text = this.oracion;
+    if (speechSynthesis.paused) {
+      speechSynthesis.resume();
+    } else {
+      speechSynthesis.cancel();
+      speechSynthesis.speak(this.mensaje);
+    }
+  }
+
+  stopSpeak() {
+    speechSynthesis.pause();
   }
 
 }
