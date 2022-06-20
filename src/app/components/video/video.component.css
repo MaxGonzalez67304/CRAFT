@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("/assets/imagenes/fondo.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -12,7 +11,9 @@
   height: 92%;
   position: absolute;
   left: 0%;
+  top: 8%;
 }
+
 iframe {
   border-radius: 5px;
 }

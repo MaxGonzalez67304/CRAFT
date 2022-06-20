@@ -3,7 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export interface Item { name: string; }
 export interface User { email: string, password: string, nivel: string, passwordconfirm: string }
 export interface Foro { email: string, comentario: string }
 
@@ -12,9 +11,6 @@ export interface Foro { email: string, comentario: string }
 })
 
 export class ConService {
-  private itemsCollection: AngularFirestoreCollection<Item>;
-  private itemDoc!: AngularFirestoreDocument<Item>;
-  items: Observable<Item[]>;
 
   private usersCollection: AngularFirestoreCollection<User>;
   private userDoc!: AngularFirestoreDocument<User>;
@@ -25,14 +21,6 @@ export class ConService {
   foros: Observable<Foro[]>;
 
   constructor(private afs: AngularFirestore) {
-    this.itemsCollection = afs.collection<Item>('items');
-    this.items = this.itemsCollection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Item;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    );
 
     this.usersCollection = afs.collection<User>('users');
     this.users = this.usersCollection.snapshotChanges().pipe(
@@ -51,24 +39,6 @@ export class ConService {
         return { id, ...data };
       }))
     );
-  }
-
-  getItems() {
-    return this.items;
-  }
-
-  addItem(item: Item) {
-    this.itemsCollection.add(item);
-  }
-
-  eliminarItem(id: any) {
-    this.itemDoc = this.afs.doc<Item>(`items/${id}`);
-    this.itemDoc.delete();
-  }
-
-  editarItem(item: Item) {
-    this.itemDoc = this.afs.doc<Item>(`items/${item}`);
-    this.itemDoc.update(item);
   }
 
   getUsers() {

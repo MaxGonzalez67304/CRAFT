@@ -1,68 +1,62 @@
-<div id="texto">
-    <div id="conte">
-        <form (ngSubmit)="agregarForo()">
-            <div class="form-group col-md-10">
-                <label class="ayuda">Comentario: </label>
-                <textarea type="text" class="form-control" placeholder="Escribe un comentario" #filtro name="filtro"
-                    [(ngModel)]="foro.comentario">
+<form (ngSubmit)="agregarForo()">
+    <div class="form-group col-md-10">
+        <label>Comentario: </label>
+        <textarea type="text" class="form-control" placeholder="Escribe un comentario" #filtro name="filtro"
+            [(ngModel)]="foro.comentario">
                     </textarea>
-                <br>
-                <button type="submit" class="btn btn-success">Agregar Comentario</button>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button type="reset" (click)="filtro.value = ''" class="btn btn-primary">Limpiar</button>
-            </div>
-        </form>
-
-        <div style="left: 0%;">
-            <ng-container *ngIf="validarSpeak.band">
-                <button (click)="playSpeak('texto')"
-                    style="background-color: darkgray; border: none; margin-left: 15px; left: 0%;"><i
-                        class="far fa-play-circle" style="color:rgb(42, 104, 180)"></i></button>
-                <button (click)="stopSpeak()" style="background-color: darkgray; border: none; left: 0%;"><i
-                        class="far fa-stop-circle" style="color:rgb(42, 104, 180)"></i></button>
-            </ng-container>
-        </div>
-
         <br>
+        <button type="submit" class="btn btn-success">Agregar Comentario</button>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <button type="reset" (click)="filtro.value = ''" class="btn btn-primary">Limpiar</button>
+    </div>
+</form>
 
-        <h2 class="ayuda" align="CENTER">Comentarios</h2>
+<div style="left: 0%;">
+    <ng-container *ngIf="validarSpeak.band">
+        <button (click)="playSpeak('texto')"
+            style="background-color: darkgray; border: none; margin-left: 15px; left: 0%;"><i class="far fa-play-circle"
+                style="color:rgb(42, 104, 180)"></i></button>
+        <button (click)="stopSpeak()" style="background-color: darkgray; border: none; left: 0%;"><i
+                class="far fa-stop-circle" style="color:rgb(42, 104, 180)"></i></button>
+    </ng-container>
+</div>
 
-        <table class="table table-dark">
-            <tbody class="ayuda">
-                <tr class="ayuda" id="espacio" *ngFor="let foro of foros">
-                    <td>{{foro.comentario}}</td>
-                    <br><br>
-                </tr>
-            </tbody>
-        </table>
+<br>
 
-        <!-- Modal -->
-        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Editar</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+<h2 align="CENTER">Comentarios</h2>
 
-                    <form (ngSubmit)="editarFormUsuario()">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="">Nombre:</label>
-                                <input type="text" class="form-control" name="name" [(ngModel)]="userEditar.email">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </form>
-                </div>
+<table class="table">
+    <tbody>
+        <tr id="espacio" *ngFor="let foro of foros">
+            <td>{{foro.comentario}}</td>
+            <br><br>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </div>
 
+            <form (ngSubmit)="editarFormUsuario()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Nombre:</label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="userEditar.email">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -33,10 +33,6 @@ export class ListaComponent implements OnInit {
     }
     this.validarSpeak = global;
     console.log(this.validarSpeak);
-    this.con.getItems().subscribe(items => {
-      this.items = items;
-      console.log(this.items);
-    });
 
     this.con.getUsers().subscribe(users => {
       this.users = users;
@@ -45,10 +41,6 @@ export class ListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  agregarElemento() {
-    this.con.addItem(this.item);
   }
 
   alertaEXITO() {
@@ -62,20 +54,6 @@ export class ListaComponent implements OnInit {
   agregarUsuario() { 
     this.con.addUser(this.user);
     this.alertaEXITO();
-  }
-
-  eliminarElemento(id: any) {
-    console.log(id);
-    this.con.eliminarItem(id);
-  }
-
-  editarElemento(item: any) {
-    console.log(item);
-    this.itemEditar = item;
-  }
-
-  editarFormElemento() {
-    this.con.editarItem(this.itemEditar);
   }
 
   eliminarUsuario(id: any) {

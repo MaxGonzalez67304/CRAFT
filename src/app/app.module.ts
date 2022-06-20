@@ -16,7 +16,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ListaComponent } from './components/lista/lista.component';
-import { AgregarComponent } from './components/agregar/agregar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TelefonoComponent } from './components/telefono/telefono.component';
 import { HomeComponent } from './components/home/home.component';
@@ -38,7 +37,6 @@ import { AboutComponent } from './components/about/about.component';
     LoginComponent,
     RegisterComponent,
     ListaComponent,
-    AgregarComponent,
     TelefonoComponent,
     HomeComponent,
     CatalogoComponent,
