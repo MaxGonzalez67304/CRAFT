@@ -10,11 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TelefonoComponent } from './components/telefono/telefono.component';
 import { VideoComponent } from './components/video/video.component';
-<<<<<<< HEAD
 import { GraficaComponent } from './components/grafica/grafica.component';
-=======
 import { AboutComponent } from './components/about/about.component';
->>>>>>> c2f724edab071b5328f1863d7496df55cba737fe
 
 const routes: Routes = [
   {
@@ -62,13 +59,13 @@ const routes: Routes = [
     component: ContactoComponent
   },
   {
-<<<<<<< HEAD
     path: 'grafica',
     component: GraficaComponent
-=======
+
+  },
+  {
     path: 'about',
     component: AboutComponent
->>>>>>> c2f724edab071b5328f1863d7496df55cba737fe
   }
 ];
 
