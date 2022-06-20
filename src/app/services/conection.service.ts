@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 export interface Item { name: string; }
 export interface User { email: string, password: string, nivel: string, passwordconfirm: string }
+export interface Foro { email: string, comentario: string }
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class ConService {
   private usersCollection: AngularFirestoreCollection<User>;
   private userDoc!: AngularFirestoreDocument<User>;
   users: Observable<User[]>;
+
+  private forosCollection: AngularFirestoreCollection<Foro>;
+  private foroDoc!: AngularFirestoreDocument<Foro>;
+  foros: Observable<Foro[]>;
 
   constructor(private afs: AngularFirestore) {
     this.itemsCollection = afs.collection<Item>('items');
@@ -33,6 +38,15 @@ export class ConService {
     this.users = this.usersCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as User;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+
+    this.forosCollection = afs.collection<Foro>('foro');
+    this.foros = this.forosCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Foro;
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
@@ -74,5 +88,25 @@ export class ConService {
     this.userDoc = this.afs.doc<User>(`users/${user}`);
     this.userDoc.update(user);
   }
+
+  getForos() {
+    return this.foros;
+  }
+
+  addForo(foro: Foro) {
+    this.forosCollection.add(foro);
+  }
+
+  eliminarForo(id: any) {
+    this.foroDoc = this.afs.doc<Foro>(`foro/${id}`);
+    this.foroDoc.delete();
+  }
+
+  editarForo(comentario: Foro) {
+    this.foroDoc = this.afs.doc<Foro>(`foro/${comentario}`);
+    this.foroDoc.update(comentario);
+  }
+
+
 
 }

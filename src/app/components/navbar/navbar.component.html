@@ -27,10 +27,6 @@
             </li>
 
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['usuarios']">Usuarios</a>
-            </li>
-
-            <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['about']">About</a>
             </li>
 
@@ -40,7 +36,7 @@
 
             <li class="nav-item" routerLinkActive="active" *ngIf="userLogged|async as user;">
                 <div *ngFor="let resu of users">
-                    <div *ngIf="user.email==resu.email&&resu.nivel">
+                    <div *ngIf="user.email==resu.email && resu.nivel">
                         <a class="nav-link" [routerLink]="['lista']">ADMIN</a>
                     </div>
                 </div>
@@ -55,9 +51,10 @@
             </li>
 
             <li class="nav-item">
-                <button (click)="habilitarSpeak()" style="background-color: #032238;"><i class="fas fa-assistive-listening-systems" style="color: white; font-size: 35px;"></i></button>
-              </li>
-            
+                <button (click)="habilitarSpeak()" style="background-color: #032238;"><i
+                        class="fas fa-assistive-listening-systems" style="color: white; font-size: 35px;"></i></button>
+            </li>
+
         </ul>
     </div>
 

@@ -27,7 +27,11 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { BebidasComponent } from './components/bebidas/bebidas.component';
+<<<<<<< HEAD
 import { GraficaComponent } from './components/grafica/grafica.component';
+=======
+import { AboutComponent } from './components/about/about.component';
+>>>>>>> c2f724edab071b5328f1863d7496df55cba737fe
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { GraficaComponent } from './components/grafica/grafica.component';
     VideoComponent,
     ContactoComponent,
     BebidasComponent,
+<<<<<<< HEAD
     GraficaComponent
+=======
+    AboutComponent
+>>>>>>> c2f724edab071b5328f1863d7496df55cba737fe
   ],
   imports: [
     BrowserModule,

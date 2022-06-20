@@ -1,89 +1,84 @@
-<h2 align="CENTER">PANEL DE ADMINISTRADOR</h2>
+<div id="conte">
+    <h2 align="CENTER">PANEL DE ADMINISTRADOR</h2>
 
-<form (ngSubmit)="agregarUsuario()">
-    <div class="form-group col-md-10">
-        <label>Correo: </label>
-        <input type="text" class="form-control" placeholder="Escribe un correo" #filtro name="filtro" [(ngModel)]="user.email">
-        <br>
-        <label>Contraseña: </label>
-        <input type="password" class="form-control" placeholder="Escribe una contraseña" #filtro2 name="filtro2" [(ngModel)]="user.password">
-        <br>
-        <label>Nivel: </label>
-        <input type="text" class="form-control" placeholder="Asigna un nivel" #filtro3 name="filtro3" [(ngModel)]="user.nivel">
-        <br>
-        <button type="submit" class="btn btn-primary">Agregar</button>
-    </div>
-</form>
+    <form (ngSubmit)="agregarUsuario()">
+        <div class="form-group col-md-10">
+            <label class="ayuda">Correo: </label>
+            <input type="text" class="form-control" placeholder="Escribe un correo" #filtro name="filtro"
+                [(ngModel)]="user.email">
+            <br>
+            <label class="ayuda">Contraseña: </label>
+            <input type="password" class="form-control" placeholder="Escribe una contraseña" #filtro2 name="filtro2"
+                [(ngModel)]="user.password">
+            <br>
+            <label class="ayuda">Nivel: </label>
+            <input type="text" class="form-control" placeholder="Asigna un nivel" #filtro3 name="filtro3"
+                [(ngModel)]="user.nivel">
+            <br>
+            <button type="submit" class="btn btn-success">Agregar Usuario</button>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <button type="reset" (click)="filtro.value = ''" class="btn btn-primary">Limpiar</button>
+        </div>
+    </form>
 
+<<<<<<< HEAD
 <button type="submit" (click)="filtro.value = ''" class="btn btn-primary">Limpiar</button> <br>
+=======
+    <br>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"><b>Correo</b></th>
+                <th scope="col"><b>Contraseña</b></th>
+                <th scope="col"><b>Administrador</b></th>
+                <th scope="col"><b>Editar/Eliminar</b></th>
+            </tr>
+        </thead>
+>>>>>>> c2f724edab071b5328f1863d7496df55cba737fe
 
-<br>
-<table class="table table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col"><b>Correo</b></th>
-            <th scope="col"><b>Contraseña</b></th>
-            <th scope="col"><b>Administrador</b></th>
-            <th scope="col"><b>Editar/Eliminar</b></th>
-        </tr>
-    </thead>
+        <tbody class="ayuda">
+            <tr *ngFor="let user of users">
+                <td>{{user.email}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.nivel}}</td>
+                <td>
+                    <fa-icon [icon]="faTrash" class="float-center text-danger" style="cursor: pointer;"
+                        (click)="eliminarUsuario(user.id)">
+                    </fa-icon>
+                    <fa-icon [icon]="faPenToSquare" class="float-left mr-2 text-success" style="cursor: pointer;"
+                        (click)="editarUsuario(user.email)" data-toggle="modal" data-target="#modelId"></fa-icon>
+                </td>
 
-    <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{user.email}}</td>
-            <td>{{user.password}}</td>
-            <td>{{user.nivel}}</td>
-            <td>
-                <fa-icon [icon]="faTrash" class="float-center text-danger" style="cursor: pointer;"
-                    (click)="eliminarUsuario(user.id)">
-                </fa-icon>
-                <fa-icon [icon]="faPenToSquare" class="float-left mr-2 text-success" style="cursor: pointer;"
-                    (click)="editarUsuario(user.email)" data-toggle="modal" data-target="#modelId"></fa-icon>
-            </td>
+            </tr>
 
-        </tr>
+        </tbody>
 
-    </tbody>
+    </table>
 
-    <!-- <tr>
-        <td>
-            <div class="alert alert-dark" *ngFor="let user of users">
-                {{user.email}}
-                {{user.password}}
-                {{user.nivel}}
-                <fa-icon [icon]="faTrash" class="float-right text-danger" style="cursor: pointer;"
-                    (click)="eliminar(item.id)">
-                </fa-icon>
-                <fa-icon [icon]="faPenToSquare" class="float-right mr-2 text-success" style="cursor: pointer;"
-                    (click)="editar(item.id)" data-toggle="modal" data-target="#modelId"></fa-icon>
-            </div>
-        </td>
-    </tr> -->
-</table>
+    <!-- Modal -->
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-<!-- Modal -->
-<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <form (ngSubmit)="editarFormUsuario()">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="">Nombre:</label>
-                        <input type="text" class="form-control" name="name" [(ngModel)]="userEditar.email">
+                <form (ngSubmit)="editarFormUsuario()">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Nombre:</label>
+                            <input type="text" class="form-control" name="name" [(ngModel)]="userEditar.email">
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

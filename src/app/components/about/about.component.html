@@ -1,0 +1,77 @@
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">About</h2>
+            <h3 class="section-subheading text-muted">Sobre Nosotros!!!</h3>
+        </div>
+        <ul class="timeline">
+            <li>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="subheading">¿Quienes somos?</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Somos una empresa de bebidas dedicada a proporcionar a nuestros clientes
+                            una opción refrescante divertida para crear momentos inolvidables.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>2012</h4>
+                        <h4 class="subheading">Fundacion</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Hace poco celebramos nuestro 10mo anisersario de el inicio de lo que somos
+                            ahora y todo esto fue posible gracias a ustedes</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="subheading">Especialización</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">A lo que nosotros nos dedicamos es a la venta de bebidas de indole
+                            aloholico, las cuales las llamamos bombas y son especialmente populares con los jovenes</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="subheading">Expansión</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p class="text-muted">Actualmente contamos con 2 sucursales en el estado de Aguascalientes, pero
+                            muy pronto abrimeros mas en todo el estado</p>
+                    </div>
+                </div>
+            </li>
+            <div class="timeline-image">
+                <h4>
+                    
+                    <a href="https://www.facebook.com/craftnieto" class="fa fa-facebook"></a>
+                    &nbsp;
+                    <a href="https://www.youtube.com/watch?v=KQ6zr6kCPj8" class="fa fa-youtube"></a>
+                    &nbsp;
+                    <a href="https://www.instagram.com/craft_universidad/?hl=es-la" class="fa fa-instagram" aria-hidden="true"></a>
+                    
+                </h4>
+            </div>
+        </ul>
+    </div>
+</section>
+
+<div style="left: 0%;">
+    <ng-container *ngIf="validarSpeak.band">
+      <button (click)="playSpeak('about')"
+        style="background-color: darkgray; border: none; margin-left: 15px; left: 0%;"><i class="far fa-play-circle"
+          style="color:rgb(42, 104, 180)"></i></button>
+      <button (click)="stopSpeak()" style="background-color: darkgray; border: none; left: 0%;"><i
+          class="far fa-stop-circle" style="color:rgb(42, 104, 180)"></i></button>
+    </ng-container>
+  </div>
