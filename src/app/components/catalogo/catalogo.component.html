@@ -1,4 +1,5 @@
 <br><br>
+<<<<<<< HEAD
 <h1 class="text-center">Catálogo de Bombas </h1>
 <br>
 <div style="justify-content: center; text-align: center;">
@@ -20,6 +21,19 @@
       <h5 class="card-title bg-dark text-white">{{i.nombre}}</h5>
       <p class="bio">{{i.bio.substr(0,110)}} ...</p>
       <p class="card-text"><small class="text-muted">{{i.tipo}}</small></p>
+=======
+<h1 class="text-center">Catalogo de Bombas </h1>
+<br>
+<div class="card-columns">
+    <div class="card" *ngFor= "let i of misHeroes, let h=index">
+      <img src="{{i.img}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{i.nombre}}</h5>
+        <p class="bio" >{{i.bio.substr(0,110)}} ...</p>
+        <p class="card-text"><small class="text-muted">{{i.aparicion}}</small></p>
+      </div>
+      <a [routerLink]="['/heroe',h]" class="mb-3 btn btn-outline-primary btn-block">VerMas</a>
+>>>>>>> e425f8381cb4d837330e19f97c8c2d602932de68
     </div>
     <a [routerLink]="['/heroe',h]" class="mb-3 btn btn-outline-primary btn-block">Ver más</a>
   </div>
