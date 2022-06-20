@@ -29,6 +29,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { BebidasComponent } from './components/bebidas/bebidas.component';
 import { GraficaComponent } from './components/grafica/grafica.component';
 import { AboutComponent } from './components/about/about.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,12 @@ import { AboutComponent } from './components/about/about.component';
     FontAwesomeModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
