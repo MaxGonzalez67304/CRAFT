@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { GlobalService } from 'src/app/global.service';
 
 @Component({
   selector: 'app-contacto',
@@ -10,13 +11,17 @@ export class ContactoComponent implements OnInit {
 
   title = 'Contactanos';
   forma!: UntypedFormGroup;
+  validarSpeak: GlobalService;
+  mensaje: any;
+  oracion: any;
   usuario:any={
     nombre:"",
     apellido:"",
     correo:""
     }
 
-  constructor() { 
+  constructor(global: GlobalService) { 
+    
     this.forma = new UntypedFormGroup({
       'nombre': new UntypedFormControl('',[Validators.required, Validators.minLength(3)]),
       'apellido': new UntypedFormControl('',Validators.required),
@@ -24,8 +29,31 @@ export class ContactoComponent implements OnInit {
     });
 
     this.forma.setValue(this.usuario);
+
+    if ('speechSynthesis' in window) {
+      this.mensaje = new SpeechSynthesisUtterance();
+    } else {
+      alert("Lo siento, tu navegador no soporta esta tecnología");
+    }
+    this.validarSpeak = global;
+    console.log(this.validarSpeak);
   }
 
+  playSpeak(texto2: string) {
+    this.oracion = document.getElementById(texto2)!.innerHTML;
+    this.mensaje.text = this.oracion;
+    if (speechSynthesis.paused) {
+      speechSynthesis.resume();
+    } else {
+      speechSynthesis.cancel();
+      speechSynthesis.speak(this.mensaje);
+    }
+  }
+
+  stopSpeak() {
+    speechSynthesis.pause();
+  }
+  
   guardarCambios(): void {
     
     console.log("metodo guardarCambios");
